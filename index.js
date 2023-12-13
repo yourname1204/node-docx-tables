@@ -93,7 +93,7 @@ module.exports = function (props) {
     // Load and extract docx file
     loadFile(props.file).then((data) => {
       if (data.files['word/document.xml']) {
-        data.files['word/document.xml'].async("binarystring").then(function (content) {
+        data.files['word/document.xml'].async("nodebuffer").then(function (content) {
           // Parse XML data
           let xmlJsonData = convert.xml2json(content, {compact: true, spaces: 4})
           // If the XML data is invalid, resolve empty object
